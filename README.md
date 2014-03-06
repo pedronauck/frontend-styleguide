@@ -18,7 +18,7 @@ It's better to write code idiomatically in each language and not bring one to an
 
 ## Style Guides
 
-* [Javascript](javacript.md)
+* [Javascript](javascript.md)
 * [CSS](css.md)
 * [AngularJS](https://github.com/mgechev/angularjs-style-guide/blob/master/README-pt-br.md)
 * [Ruby](https://github.com/bbatsov/ruby-style-guide/blob/master/README.md)
