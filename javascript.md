@@ -24,5 +24,5 @@ Hello guys! This is my Javascript Styleguide that I using to write javascript co
 
 ## <a name='references'></a> References
 
-[AirBNB Javascript Styeguide](https://github.com/airbnb/javascript)
-[Zeno Rocha's Javascript Styleguide](https://github.com/zenorocha/my-coding-style)
+- [AirBNB Javascript Styeguide](https://github.com/airbnb/javascript)   
+- [Zeno Rocha's Javascript Styleguide](https://github.com/zenorocha/my-coding-style)
