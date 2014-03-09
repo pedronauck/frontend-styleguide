@@ -1,0 +1,161 @@
+// ----------------------------------------------------------------------------
+//
+//  Mixins Module
+//
+//  All general purpose mixins are defined here.
+//
+// ----------------------------------------------------------------------------
+
+@mixin opacity($value) {
+  opacity: $value;
+  -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity="$value * 100")';
+  filter: alpha(opacity = $value * 100);
+  zoom: 1;
+}
+
+// ----------------------------------------------------------------------------
+//	Mixins for list elements
+// ----------------------------------------------------------------------------
+
+@mixin list-nostyle {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin: 0;
+  }
+}
+
+@mixin list-horizontal {
+  width: 100%;
+  display: table;
+	@include list-nostyle;
+
+	li {
+		float: left;
+	}
+}
+
+@mixin inline-block {
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+}
+
+// ----------------------------------------------------------------------------
+//	Mixin for define a input placeholder color
+// ----------------------------------------------------------------------------
+
+@mixin placeholder($color) {
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &:-moz-placeholder {
+    color: $color;
+  }
+  &::-moz-placeholder {
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+}
+
+// ----------------------------------------------------------------------------
+//	Mixin to use a css3 technicals in html elements
+// ----------------------------------------------------------------------------
+
+@mixin image-replacement {
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-indent: 100%;
+    @include nowrap;
+  }
+}
+
+@mixin pseudo-element {
+  position: absolute;
+  display: block;
+  content: '';
+}
+
+// ----------------------------------------------------------------------------
+//	Mixin for define media querie to retina display
+// ----------------------------------------------------------------------------
+
+@mixin retina($ratio: 2.3) {
+  @media only screen and (-webkit-min-device-pixel-ratio: $ratio), only screen and (min--moz-device-pixel-ratio: $ratio), only screen and (-o-min-device-pixel-ratio: #{$ratio}/1), only screen and (min-resolution: #{round($ratio * 96)}dpi), only screen and (min-resolution: #{$ratio}dppx) {
+    @content;
+  }
+}
+
+// ----------------------------------------------------------------------------
+//  Mixins for animation with CSS3
+// ----------------------------------------------------------------------------
+
+@mixin animation($content) {
+  animation: $content;
+  -moz-animation: $content;
+  -webkit-animation: $content;
+}
+
+@mixin animation-duration($timeout) {
+  animation-duration: $timeout;
+  -moz-animation-duration: $timeout;
+  -webkit-animation-duration: $timeout;
+}
+
+@mixin animation-delay($timeout) {
+  animation-delay: $timeout;
+  -moz-animation-delay: $timeout;
+  -webkit-animation-delay: $timeout;
+}
+
+@mixin animation-iteration-count($times) {
+  animation-iteration-count: $times;
+  -moz-animation-iteration-count: $times;
+  -webkit-animation-iteration-count: $times;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} { @content; }
+  @-moz-keyframes #{$name} { @content; }
+  @-webkit-keyframes #{$name} { @content; }
+}
+
+// ----------------------------------------------------------------------------
+//	Mixins for text legibility in all browsers
+// ----------------------------------------------------------------------------
+
+@mixin font-smothing($method:antialiased) {
+  -webkit-font-smoothing: $method;
+  -moz-font-smoothing: $method;
+  -ms-font-smoothing: $method;
+  font-smoothing: $method;
+}
+
+@mixin text-stroke($size, $color) {
+  -webkit-text-stroke: $size $color;
+  -moz-text-stroke: $size $color;
+  -ms-text-stroke: $size $color;
+  text-stroke: $size $color;
+}
+
+// ----------------------------------------------------------------------------
+//	Mixin to create a box-shadow/text-shadow with a custom color
+// ----------------------------------------------------------------------------
+
+@mixin shadow($type, $height, $color, $factor) {
+	@if $type == "box" {
+		@include box-shadow(0 $height 0 darken($color, $factor));
+	}
+	@else if $type == "text" {
+		@include text-shadow(0 $height 0 darken($color, $factor));
+	}
+}

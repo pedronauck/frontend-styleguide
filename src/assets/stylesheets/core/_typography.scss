@@ -1,0 +1,125 @@
+// ----------------------------------------------------------------------------
+//
+//  Core > Typography
+//
+//  Contains all typographical elements styles.
+//
+// ----------------------------------------------------------------------------
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,q:after {
+  content: "";
+  content: none;
+}
+
+abbr {
+  text-transform: lowercase;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+pre, code, kbd, samp {
+  font-family: monospace, sans-serif;
+}
+
+dfn {
+  font-style: italic;
+}
+
+ins {
+  background-color: #ffff99;
+  color: black;
+  text-decoration: none;
+}
+
+mark {
+  background-color: #ffff99;
+  color: black;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+small {
+  font-size: 85%;
+}
+
+strong, th {
+  font-weight: bold;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+ul, ol, dd {
+  margin-bottom: 1.5em;
+  margin-left: 1.5em;
+}
+
+ol {
+  list-style: inside decimal;
+}
+
+ul {
+  list-style: inside disc;
+}
+
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+  margin-bottom: 0;
+}
+
+ul li,
+ol li {
+  margin-bottom: 0.5em;
+}
+
+ul li li,
+ol li li {
+  margin-bottom: 0;
+}
+
+p {
+  margin-bottom: 1.5em;
+}
+
+p + p {
+  margin-top: -0.3em;
+}
+
+pre {
+  padding: 15px;
+  white-space: pre;
+  // CSS2
+  white-space: pre-wrap;
+  // CSS 2.1
+  white-space: pre-line;
+  // CSS 3 (and 2.1 as well, actually)
+  word-wrap: break-word;
+  // IE
+}

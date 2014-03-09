@@ -1,0 +1,245 @@
+// ----------------------------------------------------------------------------
+//
+//  Components > Typography
+//
+// ----------------------------------------------------------------------------
+
+// heading properties
+$heading-top-margin: flex(10px);
+$heading-bottom-margin: flex(20px);
+$heading-letter-spacing: -0.03em;
+$heading-font-weight: 100;
+$heading-color: $text-color;
+
+// heading size
+$h1-size: flex(50px);
+$h2-size: flex(37px);
+$h3-size: flex(27px);
+$h4-size: flex(23px);
+$h5-size: flex(18px);
+$h6-size: flex(16px);
+
+// paragraphs style
+$paragraph-line-height: flex(27px);
+$paragraph-margin-bottom: $global-margin;
+
+// code style
+$code-font-size: flex(13px);
+$code-font-color: $color-error;
+$code-bg: #f2f2f2;
+$code-radius: 3px;
+$code-border-size: 1px;
+$code-border-style: solid;
+$code-border-color: #dddddd;
+$code-padding: flex(2px) flex(5px);
+
+// hr style
+$hr-border-width: 1px;
+$hr-border-style: solid;
+$hr-border-color: $color-soft;
+$hr-margin: flex(20px);
+
+// blockquotes style
+$blockquote-font-color: lighten($heading-color, 30%);
+$blockquote-padding: flex(5px) flex(20px);
+$blockquote-border: 5px solid $color-soft;
+$blockquote-cite-font-size: flex(12px);
+$blockquote-cite-font-color: lighten($heading-color, 20%);
+$blockquote-cite-link-color: $blockquote-cite-font-color;
+
+// list styles
+$list-style-position: outside;
+$list-side-margin: $global-margin;
+$definition-list-header-weight: bold;
+$definition-list-header-margin-bottom: 0.3em;
+$definition-list-margin-bottom: $global-margin;
+
+// ----------------------------------------------------------------------------
+//  Mixins
+// ----------------------------------------------------------------------------
+
+@mixin typ-heading-base {
+  color: $heading-color;
+  letter-spacing: $heading-letter-spacing;
+  font-weight: $heading-font-weight;
+  font-family: $font-family;
+  line-height: 1;
+  margin-top: $heading-top-margin;
+  margin-bottom: $heading-bottom-margin;
+}
+
+@mixin typ-hr-base {
+  clear: both;
+  height: 0;
+  border-style: $hr-border-style;
+  border-color: $hr-border-color;
+  border-width: $hr-border-width 0 0 0;
+  margin: $hr-margin 0;
+}
+
+@mixin typ-blockquote-base {
+  font-style: normal;
+  border-left: $blockquote-border;
+  margin: 0 0 $paragraph-margin-bottom;
+  padding: $blockquote-padding;
+
+  cite {
+    display: block;
+    font-size: $blockquote-cite-font-size;
+    color: $blockquote-cite-font-color;
+
+    &:before {
+      content: "\2014 \0020";
+    }
+
+    a, a:visited {
+      color: $blockquote-cite-link-color;
+    }
+  }
+
+  &.right {
+    text-align: right;
+    border-left: 0;
+    border-right: $blockquote-border;
+  }
+}
+
+@mixin typ-code-base {
+  font-size: $code-font-size;
+  color: $code-font-color;
+  background: $code-bg;
+  @include border-radius($code-radius);
+  border: $code-border-size $code-border-style $code-border-color;
+  padding: $code-padding;
+}
+
+// ----------------------------------------------------------------------------
+//  Headings
+// ----------------------------------------------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  @include typ-heading-base;
+}
+
+h1 {
+  font-size: $h1-size;
+  margin-bottom: $heading-bottom-margin;
+}
+
+h2 {
+  font-size: $h2-size;
+  margin-bottom: $heading-bottom-margin;
+}
+
+h3 {
+  font-size: $h3-size;
+  margin-bottom: $heading-bottom-margin + 0.1em;
+}
+
+h4 {
+  font-size: $h4-size;
+  margin-bottom: $heading-bottom-margin + 0.2em;
+}
+
+h5 {
+  font-size: $h5-size;
+  margin-bottom: $heading-bottom-margin + 0.2em;
+}
+
+h6 {
+  font-size: $h6-size;
+  margin-bottom: $heading-bottom-margin + 0.2em;
+}
+
+hr {
+  @include typ-hr-base;
+}
+
+// ----------------------------------------------------------------------------
+//  Paragraphs
+// ----------------------------------------------------------------------------
+
+p {
+  line-height: $paragraph-line-height;
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+// ----------------------------------------------------------------------------
+//  Blockquote
+// ----------------------------------------------------------------------------
+
+blockquote {
+  @include typ-blockquote-base;
+}
+
+blockquote,
+blockquote p {
+  line-height: $paragraph-line-height;
+  color: $blockquote-font-color;
+}
+
+// ----------------------------------------------------------------------------
+//  Code
+// ----------------------------------------------------------------------------
+
+code {
+  @include typ-code-base;
+}
+
+// ----------------------------------------------------------------------------
+//  Lists
+// ----------------------------------------------------------------------------
+
+ul, ol, dl {
+  line-height: $paragraph-line-height;
+  margin-bottom: $paragraph-margin-bottom;
+  list-style-position: $list-style-position;
+}
+
+// Unordered Lists
+ul {
+  li {
+    ul, ol {
+      margin-left: $list-side-margin;
+      margin-bottom: 0;
+      font-size: 1em;
+    }
+  }
+
+  &.square,
+  &.circle,
+  &.disc {
+    li ul {
+      list-style: inherit;
+    }
+  }
+
+  &.square {
+    list-style-type: square;
+  }
+
+  &.circle {
+    list-style-type: circle;
+  }
+
+  &.disc {
+    list-style-type: disc;
+  }
+
+  &.no-bullet {
+    list-style: none;
+  }
+}
+
+// ----------------------------------------------------------------------------
+//	Ordered Lists
+// ----------------------------------------------------------------------------
+
+ol {
+  li {
+    ul, ol {
+      margin-left: $list-side-margin;
+      margin-bottom: 0;
+    }
+  }
+}

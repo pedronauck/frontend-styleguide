@@ -1,0 +1,18 @@
+# =============================================
+# PROJECT METADATA
+# =============================================
+
+dist:              ./dist
+app:               ./src
+
+css:               <%= site.production %>/css
+assets:            <%= site.production %>
+
+sass:              <%= site.app %>/assets/stylesheets
+images:            <%= site.app %>/assets/images
+fonts:             <%= site.app %>/assets/fonts
+js:                <%= site.app %>/assets/javascripts
+
+partials:          <%= site.app %>/partials
+layouts:           <%= site.app %>/layouts
+layout:            default.hbs

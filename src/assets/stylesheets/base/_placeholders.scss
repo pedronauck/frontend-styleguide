@@ -1,0 +1,33 @@
+// ----------------------------------------------------------------------------
+//
+//  Mixins Module
+//
+//  Small blocks of functional codes. Set them is this file.
+//
+// ----------------------------------------------------------------------------
+
+%wrap {
+  zoom: 1;
+
+  &:before, &:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+%visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}

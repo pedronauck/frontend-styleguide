@@ -1,0 +1,71 @@
+// ----------------------------------------------------------------------------
+//
+//  Functions Module
+//
+//  All general purpose functions are defined here.
+//
+// ----------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------
+//	Functions to get black/white color with opacity
+// ----------------------------------------------------------------------------
+
+@function black($opacity) {
+  @return rgba(0, 0, 0, $opacity);
+}
+
+@function white($opacity) {
+  @return rgba(255, 255, 255, $opacity);
+}
+
+// ----------------------------------------------------------------------------
+//	Functions thats auto-convert units
+// ----------------------------------------------------------------------------
+
+@function removeUnir($number) {
+  $unit: unit($number);
+  $one: 1;
+  @if $unit == "px" {
+    $one: 1px;
+  }
+  @if $unit == "em" {
+    $one: 1em;
+  }
+  @if $unit == "%" {
+    $one: 1%;
+  }
+  @return $number / $one;
+}
+
+@function flex($target, $context: $base-font-size, $unit: "em") {
+  $size: removeUnir($target) / removeUnir($context);
+  @if $unit == "" {
+    @return $size;
+  }
+  @if $unit == "em" {
+    @return #{$size}em;
+  }
+  @if $unit == "%" {
+    @return percentage($size);
+  }
+}
+
+@function perc($target, $context) {
+  @return flex($target, $context, "%");
+}
+
+@function em($target, $context) {
+  @return flex($target, $context, "em");
+}
+
+@function baseSize($pxWidth) {
+  @return $pxWidth / $base-font-size * 1em;
+}
+
+// ----------------------------------------------------------------------------
+//	Function for get the centered position between two elements
+// ----------------------------------------------------------------------------
+
+@function centered-position($context, $element) {
+	@return ($context - $element) / 2;
+}

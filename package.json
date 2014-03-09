@@ -1,0 +1,20 @@
+{
+  "name": "codeGuide",
+  "version": "0.0.1",
+  "description": "",
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">=0.8"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-contrib-compass": "^0.7.2",
+    "assemble": "~0.4.4",
+    "time-grunt": "^0.2.10"
+  },
+  "author": "Pedro Nauck <pedronauck@gmail.com>",
+  "license": "MIT"
+}

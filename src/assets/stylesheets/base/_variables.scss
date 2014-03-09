@@ -1,0 +1,47 @@
+// ----------------------------------------------------------------------------
+//
+//  Variables
+//
+//  All variables contains in project.
+//	Define here the general values and others.
+//
+// ----------------------------------------------------------------------------
+
+$body-bg: white;
+$base-font-size: 16px;
+
+$font-family: "Montserrat", Helvetica, sans-serif;
+$font-weight: 400;
+$font-style: normal;
+
+$global-radius: 3px;
+$global-rounded: 1000px;
+$global-margin: 40px;
+$global-columns: 12;
+
+$base-shadow: $global-margin / 10;
+$base-factor: 10%;
+
+// ----------------------------------------------------------------------------
+//  Base colors used in almost all components
+// ----------------------------------------------------------------------------
+
+$color-hard: #303133;
+$color-medium-soft: lighten($color-hard, 40%);
+$color-soft: lighten($color-hard, 75%);
+
+$color-primary: #368EBF;
+$color-secondary: #FD8679;
+$color-success: #00Bf9A;
+$color-error: #E65F78;
+$color-waiting: #E6CB61;
+
+$text-color: $color-hard;
+$input-color: $color-medium-soft;
+
+$link-color: $color-primary;
+$link-hover-color: lighten($link-color, 10%);
+$link-active-color: darken($link-color, 10%);
+
+$selection-background: $color-primary;
+$selection-color: white;

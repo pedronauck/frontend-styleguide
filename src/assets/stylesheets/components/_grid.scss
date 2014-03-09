@@ -1,0 +1,40 @@
+// ----------------------------------------------------------------------------
+//
+//  Components > Grid
+//
+// ----------------------------------------------------------------------------
+
+.container {
+  margin: 0 auto;
+  max-width: 48rem;
+  width: 90%;
+}
+
+.row {
+  @extend %wrap;
+}
+
+.column {
+  margin-bottom: 1.5rem;
+  background: $color-soft;
+
+  &:first-child {
+    border-right: 2px solid white;
+  }
+}
+
+@media (min-width: 40rem) {
+  .column {
+    float: left;
+    margin: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .column.full { width: 100%; }
+  .column.two-thirds { width: 66.7%; }
+  .column.half { width: 50%; }
+  .column.third { width: 33.3%; }
+  .column.fourth { width: 24.95%; }
+  .column.flow-opposite { float: right; }
+}

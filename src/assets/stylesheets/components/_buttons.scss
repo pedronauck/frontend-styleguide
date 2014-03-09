@@ -1,0 +1,300 @@
+// ----------------------------------------------------------------------------
+//
+//  Components > Buttons
+//
+// ----------------------------------------------------------------------------
+
+// colors
+$btn-bg-soft: desaturate($color-soft, $base-factor * 2);
+$btn-bg-primary: desaturate($color-primary, $base-factor);
+$btn-bg-secondary: desaturate($color-secondary, $base-factor * 2);
+$btn-bg-waiting: desaturate($color-waiting, $base-factor * 2);
+$btn-bg-success: desaturate($color-success, $base-factor * 2);
+$btn-bg-error: desaturate($color-error, $base-factor * 2);
+$btn-bg-hard: desaturate($color-hard, $base-factor * 2);
+
+// border properties
+$btn-border-width: 0;
+$btn-border-style: solid;
+
+// sizes
+$btn-tny: baseSize(8px);
+$btn-sml: baseSize(9px);
+$btn-med: baseSize(13px);
+$btn-lrg: baseSize(17px);
+
+// properties
+$btn-function-factor: $base-factor / 2;
+$btn-display: inline-block;
+
+// font atributes
+$btn-font-weight: 700;
+$btn-font-color: white;
+$btn-font-color-alt: #535a5e;
+$btn-font-tny: baseSize(10px);
+$btn-font-sml: baseSize(13px);
+$btn-font-med: baseSize(14px);
+$btn-font-lrg: baseSize(20px);
+$btn-font-align: center;
+
+// radius
+$btn-radius: $global-radius;
+$btn-rounded: $global-rounded;
+
+// disabled
+$btn-disabled-opacity: 0.6;
+
+// shadow
+$btn-active-shadow: 0 2px 4px black(0.2) inset;
+$btn-tshadow-black: 0 -1px 0 black(0.2);
+$btn-tshadow-white: 0 1px 0 white(0.3);
+
+// ----------------------------------------------------------------------------
+//  Buttons Mixins
+// ----------------------------------------------------------------------------
+
+@mixin button-base($style: true, $display: $btn-display) {
+  @if $style {
+  	line-height: 1;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: $btn-font-align;
+    border-style: $btn-border-style;
+    border-width: $btn-border-width;
+    font-weight: $btn-font-weight;
+    margin: 0;
+  }
+  @if $display {
+    display: $display;
+  }
+}
+
+@mixin button-size($padding: $btn-med, $full-width: false, $is-input: false) {
+  @if $padding {
+    padding-top: $padding * 1.3;
+    padding-left: $padding * 1.5;
+    padding-bottom: $padding * 1.3;
+    padding-right: $padding * 1.5;
+
+    @if $padding == $btn-med {
+      font-size: $btn-font-med;
+    }
+
+    @else if $padding == $btn-tny {
+      font-size: $btn-font-tny;
+    }
+
+    @else if $padding == $btn-sml {
+      font-size: $btn-font-sml;
+    }
+
+    @else if $padding == $btn-lrg {
+      font-size: $btn-font-lrg;
+    }
+
+    @else {
+      font-size: $padding - baseSize(2px);
+    }
+  }
+
+  @if $full-width {
+
+    @if $padding {
+      padding-top: $padding;
+      padding-bottom: $padding + baseSize(1px);
+    }
+    @else if $padding == false {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    padding-right: 0px;
+    padding-left: 0px;
+    width: 100%;
+  }
+
+  @if $is-input == $btn-lrg {
+    padding-top: $is-input + baseSize(0.5px);
+    padding-bottom: $is-input + baseSize(0.5px);
+  }
+
+  @else if $is-input {
+    padding-top: $is-input + baseSize(1px);
+    padding-bottom: $is-input;
+  }
+}
+
+@mixin button-style($bg: $btn-bg-soft, $radius: true, $disabled: false) {
+  @if $bg {
+    $bg-lightness: lightness($bg);
+    background: $bg;
+    border-color: darken($bg, $btn-function-factor);
+    @include box-shadow(0 2px 0 darken($bg, $btn-function-factor * 2));
+
+    &:hover, &:focus {
+      background: lighten($bg, $btn-function-factor / 2);
+      border-color: darken($bg, $btn-function-factor / 2);
+    }
+
+    &:active {
+      background: darken($bg, $btn-function-factor / 3);
+      border-color: darken($bg, $btn-function-factor * 1.5);
+      top: 2px;
+    }
+
+    @if $bg-lightness > 75% {
+      color: $btn-font-color-alt;
+      @include text-shadow($btn-tshadow-white);
+
+      &:hover, &:focus {
+        color: $btn-font-color-alt;
+      }
+    }
+
+    @else {
+      color: $btn-font-color;
+      @include text-shadow($btn-tshadow-black);
+      &:hover, &:focus {
+        color: $btn-font-color;
+      }
+    }
+  }
+
+  @if $disabled {
+    cursor: default;
+    opacity: $btn-disabled-opacity;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    &:hover, &:focus {
+      @include background(linear-gradient($bg, darken($bg, $btn-function-factor)));
+      border-color: darken($bg, $btn-function-factor * 1.25);
+    }
+  }
+
+  @if $radius == true {
+    @include border-radius($btn-radius);
+  }
+
+  @if $radius == false {
+    @include border-radius(0);
+  }
+
+  @else if $radius {
+    @include border-radius($radius);
+  }
+}
+
+@mixin button($padding: $btn-med, $bg: $btn-bg-font, $radius: false, $full-width: false, $disabled: false, $is-input: false, $is-prefix: false) {
+  @include button-base;
+  @include button-size($padding, $full-width, $is-input);
+  @include button-style($bg, $radius, $disabled);
+}
+
+// ----------------------------------------------------------------------------
+//  Buttons Classes
+// ----------------------------------------------------------------------------
+
+a,
+button,
+input[type=submit],
+input[type=reset],
+input[type=button] {
+
+  &.btn {
+    @include button-base;
+    @include button-size;
+    @include button-style;
+
+// ----------------------------------------------------------------------------
+//  Colors
+// ----------------------------------------------------------------------------
+
+    &.btn-primary {
+      @include button-style($bg: $btn-bg-primary);
+    }
+
+    &.btn-secondary {
+      @include button-style($bg: $btn-bg-secondary);
+    }
+
+    &.btn-waiting {
+      @include button-style($bg: $btn-bg-waiting);
+    }
+
+    &.btn-success {
+      @include button-style($bg: $btn-bg-success);
+    }
+
+    &.btn-error {
+      @include button-style($bg: $btn-bg-error);
+    }
+
+    &.btn-hard {
+      @include button-style($bg: $btn-bg-hard);
+    }
+
+// ----------------------------------------------------------------------------
+//  Sizes
+// ----------------------------------------------------------------------------
+
+    &.btn-large {
+      @include button-size($padding: $btn-lrg);
+    }
+
+    &.btn-small {
+      @include button-size($padding: $btn-sml);
+    }
+
+    &.btn-tiny {
+      @include button-size($padding: $btn-tny);
+    }
+
+    &.btn-block {
+      @include button-size($padding: null, $full_width: true);
+    }
+
+// ----------------------------------------------------------------------------
+//  Disabled
+// ----------------------------------------------------------------------------
+
+    &.disabled, &[disabled] {
+      @include button-style($bg: $btn-bg-soft, $disabled: true);
+
+      &.btn-primary {
+        @include button-style($bg: $btn-bg-primary, $disabled: true);
+      }
+
+      &.btn-secondary {
+        @include button-style($bg: $btn-bg-secondary, $disabled: true);
+      }
+
+      &.btn-waiting {
+        @include button-style($bg: $btn-bg-waiting, $disabled: true);
+      }
+
+      &.btn-success {
+        @include button-style($bg: $btn-bg-success, $disabled: true);
+      }
+
+      &.btn-error {
+        @include button-style($bg: $btn-bg-error, $disabled: true);
+      }
+
+      &.btn-hard {
+        @include button-style($bg: $btn-bg-hard, $disabled: true);
+      }
+    }
+
+// ----------------------------------------------------------------------------
+//  Radius
+// ----------------------------------------------------------------------------
+
+    &.btn-noradius {
+      @include button-style($bg: false, $radius: false);
+    }
+
+    &.btn-rounded {
+      @include button-style($bg: false, $radius: $btn-rounded);
+    }
+  }
+}
