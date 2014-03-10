@@ -10,20 +10,16 @@ $column-right-bg: lighten($body-bg, 3%);
 //  Classes
 // ----------------------------------------------------------------------------
 
+.row {
+  border-bottom: 2px solid lighten($column-right-bg, 4%);
+}
+
 .column {
   padding: $global-margin;
 }
 
-.column p {
-  max-width: 40rem;
-}
-
-.column-primary {
+.column ~ .column {
   background-color: $column-right-bg;
-}
-
-.row {
-  border-bottom: 2px solid $column-right-bg;
 }
 
 @media (min-width: 48rem) {
@@ -37,8 +33,10 @@ $column-right-bg: lighten($body-bg, 3%);
     display: table-cell;
     vertical-align: top;
   }
+}
 
-  .column + .column {
-    border-top: 0;
-  }
+.column > *:last-child,
+.column > *:last-child > *:last-child,
+.column > *:last-child > *:last-child > *:last-child {
+  margin-bottom: 0;
 }

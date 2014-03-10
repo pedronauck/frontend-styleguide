@@ -16,7 +16,7 @@ $font-style: normal;
 
 $global-radius: 3px;
 $global-rounded: 1000px;
-$global-margin: 40px;
+$global-margin: 50px;
 $global-columns: 12;
 
 $base-shadow: $global-margin / 10;
@@ -30,8 +30,8 @@ $color-hard: #232830;
 $color-medium-soft: lighten($color-hard, 40%);
 $color-soft: lighten($color-hard, 75%);
 
-$color-primary: #425B9C;
-$color-secondary: #FD8679;
+$color-primary: #3498DB;
+$color-secondary: #BE6D84;
 $color-success: #00Bf9A;
 $color-error: #E65F78;
 $color-waiting: #E6CB61;
@@ -39,9 +39,9 @@ $color-waiting: #E6CB61;
 $text-color: lighten($body-bg, 50%);
 $input-color: $color-medium-soft;
 
-$link-color: $color-primary;
+$link-color: desaturate($color-primary, 15%);
 $link-hover-color: lighten($link-color, 10%);
 $link-active-color: darken($link-color, 10%);
 
-$selection-background: $color-primary;
+$selection-background: $color-success;
 $selection-color: white;
