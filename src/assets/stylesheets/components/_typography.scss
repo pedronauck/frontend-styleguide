@@ -5,8 +5,8 @@
 // ----------------------------------------------------------------------------
 
 // heading properties
-$heading-top-margin: flex(10px);
-$heading-bottom-margin: flex(15px);
+$heading-top-margin: flex($global-margin);
+$heading-bottom-margin: flex($global-margin / 2);
 $heading-letter-spacing: -0.03em;
 $heading-font-weight: 400;
 $heading-color: white;
@@ -24,13 +24,13 @@ $paragraph-line-height: flex(27px);
 $paragraph-margin-bottom: $global-margin;
 
 // code style
-$code-font-size: flex(13px);
-$code-font-color: $color-error;
-$code-bg: #f2f2f2;
-$code-radius: 3px;
+$code-font-size: flex(16px);
+$code-font-color: $color-medium-soft;
+$code-bg: lighten($body-bg, 5%);
+$code-radius: $global-radius;
 $code-border-size: 1px;
 $code-border-style: solid;
-$code-border-color: #dddddd;
+$code-border-color: lighten($body-bg, 10%);
 $code-padding: flex(2px) flex(5px);
 
 // hr style
@@ -42,8 +42,8 @@ $hr-margin: flex(20px);
 // blockquotes style
 $blockquote-font-color: lighten($body-bg, 30%);
 $blockquote-font-size: flex(18px);
-$blockquote-padding: flex(5px) 0;
-$blockquote-border: 0 solid $color-soft;
+$blockquote-padding: flex(5px) flex(20px);
+$blockquote-border: 4px solid lighten($body-bg, 10%);
 $blockquote-cite-font-size: flex(14px);
 $blockquote-cite-font-color: lighten($heading-color, 20%);
 $blockquote-cite-link-color: $blockquote-cite-font-color;
@@ -82,7 +82,11 @@ $definition-list-margin-bottom: $global-margin;
   font-style: italic;
   font-size: $blockquote-font-size;
   border-left: $blockquote-border;
-  margin: 0;
+  padding: $blockquote-padding;
+
+  & > p {
+    margin: 0;
+  }
 
   cite {
     display: block;
@@ -111,11 +115,9 @@ $definition-list-margin-bottom: $global-margin;
 
 @mixin typ-code-base {
   font-size: $code-font-size;
+  line-height: 1.8;
   color: $code-font-color;
-  background: $code-bg;
   @include border-radius($code-radius);
-  border: $code-border-size $code-border-style $code-border-color;
-  padding: $code-padding;
 }
 
 // ----------------------------------------------------------------------------
@@ -128,56 +130,41 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: $h1-size;
-  margin-top: 0;
-
-  & ~ & {
-    margin-top: $heading-top-margin;
-  }
+  margin-top: $heading-bottom-margin;
 }
 
 h2 {
   font-size: $h2-size;
-  margin-top: 0;
-
-  & ~ & {
-    margin-top: $heading-top-margin;
-  }
+  margin-top: $heading-bottom-margin;
 }
 
 h3 {
   font-size: $h3-size;
-  margin-top: 0;
-
-  & ~ & {
-    margin-top: $heading-top-margin + 0.1em;
-  }
+  margin-top: $heading-bottom-margin + 0.1em;
 }
 
 h4 {
   font-size: $h4-size;
-  margin-top: 0;
-
-  & ~ & {
-    margin-top: $heading-top-margin + 0.2em;
-  }
+  margin-top: $heading-bottom-margin + 0.2em;
 }
 
 h5 {
   font-size: $h5-size;
-  margin-top: 0;
-
-  & ~ & {
-    margin-top: $heading-top-margin + 0.2em;
-  }
+  margin-top: $heading-bottom-margin + 0.2em;
 }
 
 h6 {
   font-size: $h6-size;
-  margin-top: 0;
+  margin-top: $heading-bottom-margin + 0.2em;
+}
 
-  & ~ & {
-    margin-top: $heading-top-margin + 0.2em;
-  }
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+  margin-top: 0;
 }
 
 hr {
@@ -188,8 +175,9 @@ hr {
 //  Paragraphs
 // ----------------------------------------------------------------------------
 
-p {
+p, blockquote {
   line-height: $paragraph-line-height;
+  margin-bottom: $global-margin / 2;
 }
 
 // ----------------------------------------------------------------------------
@@ -212,6 +200,13 @@ blockquote p {
 
 code {
   @include typ-code-base;
+
+  &:not([class*="language-"]) {
+    font-size: flex(15px);
+    background: $code-bg;
+    border: $code-border-size $code-border-style $code-border-color;
+    padding: $code-padding;
+  }
 }
 
 // ----------------------------------------------------------------------------
