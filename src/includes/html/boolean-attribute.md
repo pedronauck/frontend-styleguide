@@ -1,0 +1,9 @@
+```markup
+<input type="text" disabled>
+
+<input type="checkbox" value="1" checked>
+
+<select>
+  <option value="1" selected>1</option>
+</select>
+```

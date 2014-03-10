@@ -1,0 +1,12 @@
+```markup
+<!-- External CSS -->
+<link rel="stylesheet" href="code-guide.css">
+
+<!-- In-document CSS -->
+<style>
+  /* ... */
+</style>
+
+<!-- JavaScript -->
+<script src="code-guide.js"></script>
+```

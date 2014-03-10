@@ -1,0 +1,12 @@
+```markup
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page title</title>
+  </head>
+  <body>
+    <img src="images/company-logo.png" alt="Company">
+    <h1 class="hello-world">Hello, world!</h1>
+  </body>
+</html>
+```
