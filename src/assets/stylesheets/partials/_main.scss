@@ -13,10 +13,15 @@ $main-title-border: 2px solid lighten($navigation-border-color, 5%);
 // ----------------------------------------------------------------------------
 
 .main-title {
-  font-size: flex(54px);
   font-weight: 100;
   color: $main-title-color;
   background: $main-title-bg;
   margin: 0;
   padding: $global-margin;
+}
+
+@media (min-width: 48rem) {
+  .main-title {
+    font-size: flex(54px);
+  }
 }

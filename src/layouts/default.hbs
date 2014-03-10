@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{ title }}</title>
+  <title>{{ title }} | FrontEnd Style Guide</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -14,7 +14,10 @@
   {{> navigation}}
 
   <main class="main">
+    <h2 class="main-title">{{title}}</h2>
     {{> body }}
   </main>
+
+  {{> footer}}
 </body>
 </html>
