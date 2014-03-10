@@ -47,3 +47,13 @@ $navigation-border: 1px solid $navigation-border-color;
     background: darken($navigation-item-bg, 3%);
   }
 }
+
+.navigation-item a img {
+  width: 15%;
+  @include transition(opacity .8s);
+  @include opacity(.2);
+}
+
+.navigation-item a:hover img {
+  @include opacity(1);
+}
