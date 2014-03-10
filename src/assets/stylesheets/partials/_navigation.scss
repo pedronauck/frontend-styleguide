@@ -1,0 +1,49 @@
+// ----------------------------------------------------------------------------
+//
+//  Partials > Navigation
+//
+// ----------------------------------------------------------------------------
+
+$navigation-item-color: white(.7);
+$navigation-item-bg: $header-bg;
+$navigation-border-color: lighten($body-bg, 4%);
+$navigation-border: 1px solid $navigation-border-color;
+
+// ----------------------------------------------------------------------------
+//  Classes
+// ----------------------------------------------------------------------------
+
+.navigation {
+  @extend %wrap;
+  border-top: $navigation-border;
+}
+
+.navigation-menu {
+  @include list-nostyle;
+  display: table;
+  width: 100%;
+}
+
+.navigation-item {
+  float: left;
+  width: 33.33%;
+  border-right: $navigation-border;
+
+  &:last-child {
+    border: 0;
+  }
+
+  a {
+    display: block;
+    text-align: center;
+    color: $navigation-item-color;
+    background: $navigation-item-bg;
+    @include transition-property(background);
+    @include transition-duration(.3s);
+    padding: ($global-margin / 2) 0;
+  }
+
+  a:hover {
+    background: darken($navigation-item-bg, 3%);
+  }
+}

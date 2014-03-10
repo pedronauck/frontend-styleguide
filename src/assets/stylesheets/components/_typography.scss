@@ -6,15 +6,15 @@
 
 // heading properties
 $heading-top-margin: flex(10px);
-$heading-bottom-margin: flex(20px);
+$heading-bottom-margin: flex(15px);
 $heading-letter-spacing: -0.03em;
-$heading-font-weight: 100;
-$heading-color: $text-color;
+$heading-font-weight: 400;
+$heading-color: white;
 
 // heading size
 $h1-size: flex(50px);
 $h2-size: flex(37px);
-$h3-size: flex(27px);
+$h3-size: flex(32px);
 $h4-size: flex(23px);
 $h5-size: flex(18px);
 $h6-size: flex(16px);
@@ -40,10 +40,11 @@ $hr-border-color: $color-soft;
 $hr-margin: flex(20px);
 
 // blockquotes style
-$blockquote-font-color: lighten($heading-color, 30%);
-$blockquote-padding: flex(5px) flex(20px);
-$blockquote-border: 5px solid $color-soft;
-$blockquote-cite-font-size: flex(12px);
+$blockquote-font-color: lighten($body-bg, 30%);
+$blockquote-font-size: flex(18px);
+$blockquote-padding: flex(5px) 0;
+$blockquote-border: 0 solid $color-soft;
+$blockquote-cite-font-size: flex(14px);
 $blockquote-cite-font-color: lighten($heading-color, 20%);
 $blockquote-cite-link-color: $blockquote-cite-font-color;
 
@@ -78,10 +79,10 @@ $definition-list-margin-bottom: $global-margin;
 }
 
 @mixin typ-blockquote-base {
-  font-style: normal;
+  font-style: italic;
+  font-size: $blockquote-font-size;
   border-left: $blockquote-border;
-  margin: 0 0 $paragraph-margin-bottom;
-  padding: $blockquote-padding;
+  margin: 0;
 
   cite {
     display: block;
@@ -101,6 +102,10 @@ $definition-list-margin-bottom: $global-margin;
     text-align: right;
     border-left: 0;
     border-right: $blockquote-border;
+  }
+
+  & ~ & {
+    margin-top: $global-margin;
   }
 }
 
@@ -123,32 +128,56 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: $h1-size;
-  margin-bottom: $heading-bottom-margin;
+  margin-top: 0;
+
+  & ~ & {
+    margin-top: $heading-top-margin;
+  }
 }
 
 h2 {
   font-size: $h2-size;
-  margin-bottom: $heading-bottom-margin;
+  margin-top: 0;
+
+  & ~ & {
+    margin-top: $heading-top-margin;
+  }
 }
 
 h3 {
   font-size: $h3-size;
-  margin-bottom: $heading-bottom-margin + 0.1em;
+  margin-top: 0;
+
+  & ~ & {
+    margin-top: $heading-top-margin + 0.1em;
+  }
 }
 
 h4 {
   font-size: $h4-size;
-  margin-bottom: $heading-bottom-margin + 0.2em;
+  margin-top: 0;
+
+  & ~ & {
+    margin-top: $heading-top-margin + 0.2em;
+  }
 }
 
 h5 {
   font-size: $h5-size;
-  margin-bottom: $heading-bottom-margin + 0.2em;
+  margin-top: 0;
+
+  & ~ & {
+    margin-top: $heading-top-margin + 0.2em;
+  }
 }
 
 h6 {
   font-size: $h6-size;
-  margin-bottom: $heading-bottom-margin + 0.2em;
+  margin-top: 0;
+
+  & ~ & {
+    margin-top: $heading-top-margin + 0.2em;
+  }
 }
 
 hr {
@@ -161,7 +190,6 @@ hr {
 
 p {
   line-height: $paragraph-line-height;
-  margin-bottom: $paragraph-margin-bottom;
 }
 
 // ----------------------------------------------------------------------------

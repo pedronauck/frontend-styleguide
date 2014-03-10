@@ -13,6 +13,10 @@ module.exports = function(grunt) {
         ],
         tasks: ['assemble']
       },
+      compass: {
+        files: ['<%= site.sass%>/**/*.{scss,sass,css}'],
+        tasks: ['compass']
+      },
       livereload: {
         options: { livereload: true },
         files: [

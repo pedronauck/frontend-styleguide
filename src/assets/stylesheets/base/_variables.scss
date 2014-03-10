@@ -7,10 +7,10 @@
 //
 // ----------------------------------------------------------------------------
 
-$body-bg: white;
-$base-font-size: 16px;
+$body-bg: #232830;
+$base-font-size: 18px;
 
-$font-family: "Montserrat", Helvetica, sans-serif;
+$font-family: "Roboto", Helvetica, sans-serif;
 $font-weight: 400;
 $font-style: normal;
 
@@ -26,17 +26,17 @@ $base-factor: 10%;
 //  Base colors used in almost all components
 // ----------------------------------------------------------------------------
 
-$color-hard: #303133;
+$color-hard: #232830;
 $color-medium-soft: lighten($color-hard, 40%);
 $color-soft: lighten($color-hard, 75%);
 
-$color-primary: #368EBF;
+$color-primary: #425B9C;
 $color-secondary: #FD8679;
 $color-success: #00Bf9A;
 $color-error: #E65F78;
 $color-waiting: #E6CB61;
 
-$text-color: $color-hard;
+$text-color: lighten($body-bg, 50%);
 $input-color: $color-medium-soft;
 
 $link-color: $color-primary;

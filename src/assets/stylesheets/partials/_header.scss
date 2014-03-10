@@ -5,13 +5,21 @@
 // ----------------------------------------------------------------------------
 
 $header-height: 80px;
-$header-background: $color-primary;
+$header-bg: darken($body-bg, 5%);
 
 // ----------------------------------------------------------------------------
 //	Header classes
 // ----------------------------------------------------------------------------
 
 .header {
-	height: $header-height;
-	background: $header-background;
+	background: $header-bg;
+  padding: ($global-margin * 1.5) 0;
+
+  .logo {
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+  }
 }
