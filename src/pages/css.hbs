@@ -1,3 +1,261 @@
 ---
 title: CSS
 ---
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- CSS Syntax --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<section class="row css-syntax">
+  <div class="column">
+{{#markdown}}
+### Sintaxe
+- Use soft-tabs com dois espaços.
+- Quando agrupar seletores, deixe seletores individuais em uma linha.
+- Inclua um espaço antes de abrir um colchete.
+- Coloque o fechamento do colchete em uma nova linha.
+- Inclua um espaço depois dos dois pontos `:` em cada declaração de propriedade.
+- Cada declaração deve estar em sua própria linha para encontrarmos melhor os erros.
+- Feche todas as declarações com ponto-vírgula `;`.
+- Não inclua espaços depois das vírgulas como em cores `rgb()`, `rgba()`, `hsl()`, `hsla()` ou `rect()`. Isto ajuda a diferenciar múltiplos valores (vírgulas, sem espaço) de cores de propriedades múltiplas (vírgulas, com espaço).
+- Também não coloque valores iniciados com zero (ex., `.5` em vez de `0.5`).
+- Deixe todos os valores hexadecimais em caixa baixa, exemplo: #FFF. Lestras com caixa baixa são mais fáceis de serem lidas e entendidas quando queremos scanear o documento.
+- Valores separados por vírgula devem incluir um espaço logo depois da vírgula.
+- Não inclua espaços depois das vírgulas como em cores rgb() ou rgba() e não inicie valores com zero.
+- Deixe todos os valores hexadecimais em UPPERCASE, exemplo: `#FFF`.
+- Use cores em hexadecimal abrevidas quando puder, exemplo: `#FFF` em vez de `#FFFFFF`.
+- Coloque aspas duplas nos valores em seletores com atributos, exemplo: `input[type="text"]`.
+- Evite especificar unidades quando os valores forem 0, exemplo: `margin: 0;` em vez de `margin: 0px;`.
+
+Dúvidas sobre os termos usados aqui? Veja a [seção de sintaxe dos CSS](http://en.wikipedia.org/wiki/Cascading_Style_Sheets#Syntax) na Wikipedia.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/css/syntax.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- CSS Syntax --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<section class="row declaration-order">
+  <div class="column">
+{{#markdown}}
+### Ordem das declarações
+Declarações relacionadas devem ser agrupadas segundo a seguinte ordem:
+
+1. Posicionamento.
+2. Box model.
+3. Tipografia.
+4. Visual.
+5. Outros.
+
+Posicionamento vem primeiro por que isto pode remover um elemento do fluxo normal do documento e substituir estilos relacionados. O box model vem depois pois ele dita as dimensões e lugar do componente.
+
+Tudo o mais que toma lugar dentro do componente ou não impacta as duas seções anteriores, vem por último.
+
+Declarações relacionadas devem ser agrupadas, colocando posicionamento e as propriedades de box-model perto do topo, seguido das propriedades de tipografia e depois propriedades visuais.
+
+Para uma lista completa de propridades e suas ordens, por favor veja [Recess](http://twitter.github.com/recess).
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/css/declaration-order.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Media Queries --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<section class="row css-media-queries">
+  <div class="column">
+{{#markdown}}
+### Onde colocar as Media Queries
+Coloque as Media Queries o mais perto possível de suas regras originais. Não as coloque separadas em outros arquivos ou no final do documento. Se você fizer isso, outros poderão não encontrá-las no futuro. Veja um exemplo típico:
+
+Opte também por usar as dimensões dadas nas queries com definições de medida em `em`, nunca em `px`.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/css/media-queries.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Prefixed Properties --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<section class="row css-prefixed-properties">
+  <div class="column">
+{{#markdown}}
+### Propriedades com prefixo
+Quando usar prefixos de browsers, idente cada propriedade alinhada verticalmente para facilitar a edição multi-linha.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/css/prefixed-properties.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Single Declarations --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<section class="row css-single-declarations">
+  <div class="column">
+{{#markdown}}
+### Declarações únicas
+Em lugares onde são definidas apenas uma linha de propriedade, considere remover as quebras de linha para melhorar a leitura e edição. Considere este exemplo:
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/css/single-declarations.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Shorthand --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<section class="row css-shorthand">
+  <div class="column">
+{{#markdown}}
+###Propriedades resumidas
+Esforce-se muito para usar declarações de propriedades resumidas onde você define todos os valores dessa propriedade. As propriedades resumidas mais usadas incluem:
+
+- `padding`
+- `margin`
+- `font`
+- `background`
+- `border`
+- `border-radius`
+
+Frequentemente não precisamos definir todos os valores que uma propriedade representa. Por exemplo, os títulos do HTML tem margens no top e bottom definidas por padrão, então, quando necessário, apenas substitua estes dois valores. O uso excessivo de propriedades resumidas (ou shorthand properties) pode fazer com que o código fique um pouco bagunçado quando substituímos propriedades não utilizadas.
+
+O Mozilla Developer Network tem um ótimo artigo em [shorthand properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) para quem não está familiarizado essa forma de escrever.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/css/shorthand.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Nesting --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<section class="row css-nesting">
+  <div class="column">
+{{#markdown}}
+### Aninhamento (nesting) com Pré-processadores
+Evite aninhar seletores (fazer "nesting"). Só porque você pode fazer isso, não significa que você deve fazê-lo sempre. Considere aninhar se você tem um escopo de estilos para um pai e se há múltiplos elementos para serem aninhados.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/css/nesting.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Human Readable --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<h3 class="title-sub">Legível para Humanos</h2>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Comments --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<section class="row comments">
+  <div class="column">
+{{#markdown}}
+### Comentários
+Código é escrito e mantido por pessoas. Certifique-se de que o código é descritivo, bem comentado e amigável para os outros. Grandes pedaços de comentários devem ter contexto e não devem apenas reiterar um nome de classe ou componente.
+
+Certifique-se de escrever em sentenças completas ou grandes comentários e frases sucintas para notas gerais.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/css/comments.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Class Names --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<section class="row class-names">
+  <div class="column">
+{{#markdown}}
+### Nomes de classes
+- Mantenha as classes em caixa baixa e use traços (não use underscores ou camelCase).
+- Evite usar arbitrariamente notações abreviadas.
+- Mantenha-as pequenas e sucintas ao máximo possível.
+- Use nomes com significado; use nomes ligados à estrutura em vez do visual.
+- Prefixe nomes de classes baseadas nos componentes pais mais próximos.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/css/class-names.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Selectors --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<section class="row selectors">
+  <div class="column">
+{{#markdown}}
+### Seletores
+- Use classes em vez de nomes de tags.
+- Mantenha os seletores pequenos e limite o número de elementos em no máximo três.
+- Use nomes de classes do elemento pais somente quando necessário (ex: quando não usar classes prefixadas).
+
+Leitura adicional:
+
+- [Scope CSS classes with prefixes](http://markdotto.com/2012/02/16/scope-css-classes-with-prefixes/)
+- [Stop the cascade](http://markdotto.com/2012/03/02/stop-the-cascade/)
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/css/selectors.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Organization --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<section class="row organization">
+  <div class="column">
+{{#markdown}}
+### Organização
+- Organize seções do código por componentes.
+- Desenvolva uma hierarquia de comentários consistente.
+- Se usar múltiplos arquivos CSS, quebre-os em componentes.
+{{/markdown}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Editor Preferences --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<section class="row editor-preferences">
+  <div class="column">
+{{#markdown}}
+### Preferências de editor
+Defina seu editor com as seguintes configurações para evitar inconsistências comuns no código e diffs sujos:
+
+- Use soft-tabs com 2 espaços
+- Apague os espaços em brancos ao salvar
+- Defina o encoding como UTF-8
+- Coloque uma nova linha no final dos arquivos
+
+Considere documentar e aplicar estas configurações para o seu projeto com o `.editorconfig`. Para um exemplo, veja o [arquivo utilizado no Bootstrap](https://github.com/twbs/bootstrap/blob/master/.editorconfig). Aprenda mais em [EditorConfig](http://editorconfig.org/)
+{{/markdown}}
+  </div>
+</section>

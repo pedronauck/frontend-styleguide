@@ -2,129 +2,165 @@
 title: HTML
 ---
 
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- HTML Syntax --}}
+{{!-- -------------------------------------------------------------------- --}}
+
 <section class="row html-syntax">
   <div class="column">
-{{#markdown}}
-### Sintaxe do HTML
-- Use soft-tabs com dois espaços.
-- Elementos aninhados devem estar identados uma vez (2 espaços).
-- Sempre use aspas duplas, nunca aspas simples.
-- Nunca inclua uma barra invertida nos elementos viúvos (exemplo: `<img>` ou `<hr>`).
-{{/markdown}}
+  {{#markdown}}
+  ### Sintaxe
+  - Use soft-tabs com dois espaços.
+  - Elementos aninhados devem estar identados uma vez (2 espaços).
+  - Sempre use aspas duplas, nunca aspas simples.
+  - Nunca inclua uma barra invertida nos elementos viúvos (exemplo: `<img>` ou `<hr>`).
+  {{/markdown}}
   </div>
   <div class="column">
     {{md 'src/includes/html/syntax.md'}}
   </div>
 </section>
 
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Doctype --}}
+{{!-- -------------------------------------------------------------------- --}}
+
 <section class="row html-doctype">
   <div class="column">
-{{#markdown}}
-### Doctype do HTML5
-Reforce os padrões com este simples doctype no início de todas as páginas HTML.
-{{/markdown}}
+  {{#markdown}}
+  ### Doctype do HTML5
+  Reforce os padrões com este simples doctype no início de todas as páginas HTML.
+  {{/markdown}}
   </div>
   <div class="column">
     {{md 'src/includes/html/doctype.md'}}
   </div>
 </section>
 
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Encoding --}}
+{{!-- -------------------------------------------------------------------- --}}
+
 <section class="row html-encoding">
   <div class="column">
-{{#markdown}}
-### Encoding de caractéres
-Assegure-se rapidamente que a renderizaçnao do seu conteúdo declarando o encoding de caractéres explicitamente.
-{{/markdown}}
+  {{#markdown}}
+  ### Encoding de caractéres
+  Assegure-se rapidamente que a renderização do seu conteúdo irá acontecer da maneira correta, declarando o encoding de caractéres explicitamente.
+  {{/markdown}}
   </div>
   <div class="column">
     {{md 'src/includes/html/encoding.md'}}
   </div>
 </section>
 
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Insert CSS and Javascript --}}
+{{!-- -------------------------------------------------------------------- --}}
+
 <section class="row html-style-script">
   <div class="column">
-{{#markdown}}
-### Inserindo CSS e JavaScript
-De acordo com as especificações do HTML5, não há necessidade de especificar um atributo type quando incluímos arquivos de CSS e JavaScript como `text/css` e `text/javascript`.
+  {{#markdown}}
+  ### Inserindo CSS e JavaScript
+  De acordo com as especificações do HTML5, não há necessidade de especificar um atributo type quando incluímos arquivos de CSS e JavaScript como `text/css` e `text/javascript`.
 
-#### Links para especificação do HTML5
-- [Usando link](http://www.w3.org/TR/2011/WD-html5-20110525/semantics.html#the-link-element)
-- [Usando style](http://www.w3.org/TR/2011/WD-html5-20110525/semantics.html#the-style-element)
-- [Usando scripts](http://www.w3.org/TR/2011/WD-html5-20110525/scripting-1.html#the-script-element)
-{{/markdown}}
+  #### Links para especificação do HTML5
+  - [Usando link](http://www.w3.org/TR/2011/WD-html5-20110525/semantics.html#the-link-element)
+  - [Usando style](http://www.w3.org/TR/2011/WD-html5-20110525/semantics.html#the-style-element)
+  - [Usando scripts](http://www.w3.org/TR/2011/WD-html5-20110525/scripting-1.html#the-script-element)
+  {{/markdown}}
   </div>
   <div class="column">
     {{md 'src/includes/html/style-script.md'}}
   </div>
 </section>
 
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Practicality --}}
+{{!-- -------------------------------------------------------------------- --}}
+
 <section class="row html-practicality">
   <div class="column">
-{{#markdown}}
-### Praticidade em vez de pureza
-Esforce-se para manter o padrão e a semântica do HTML, mas não às custas da praticidade. <br>Use o mínimo de código com a menor complexidade possível.
-{{/markdown}}
+  {{#markdown}}
+  ### Praticidade em vez de pureza
+  Esforce-se para manter o padrão e a semântica do HTML, mas não às custas da praticidade. <br>Use o mínimo de código com a menor complexidade possível.
+  {{/markdown}}
   </div>
 </section>
 
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Attribute Order --}}
+{{!-- -------------------------------------------------------------------- --}}
+
 <section class="row html-attribute-order">
   <div class="column">
-{{#markdown}}
-### Ordem dos atributos
-Atributos HTML devem usar esta ordem em particular para facilitar a leitura do código.
-- `class`
-- `id`
-- `data-*`
-- `for`, `type`, ou `href`
-- `src`, `for`, `type`, `href`
-- `title`, `alt`
-- `aria-*`, `role`
-{{/markdown}}
+  {{#markdown}}
+  ### Ordem dos atributos
+  Atributos HTML devem usar esta ordem em particular para facilitar a leitura do código.
+  - `class`
+  - `id`
+  - `data-*`
+  - `for`, `type`, ou `href`
+  - `src`, `for`, `type`, `href`
+  - `title`, `alt`
+  - `aria-*`, `role`
+  {{/markdown}}
   </div>
   <div class="column">
     {{md 'src/includes/html/attribute-order.md'}}
   </div>
 </section>
 
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Boolean Attribute --}}
+{{!-- -------------------------------------------------------------------- --}}
+
 <section class="row html-boolean-attributes">
   <div class="column">
-{{#markdown}}
-### Atributos booleanos
-Um atributo boleano é o único que não precisa ter valores declarados. O XHTML precisa que você declare um valor, mas no HTML5 isso não é necessário.
+  {{#markdown}}
+  ### Atributos booleanos
+  Um atributo boleano é o único que não precisa ter valores declarados. O XHTML precisa que você declare um valor, mas no HTML5 isso não é necessário.
 
-Para uma leitura adicional, consulte a seção do WhatWG sobre atributos booleanos:
+  Para uma leitura adicional, consulte a seção do WhatWG sobre atributos booleanos:
 
-> A presença de um atributo boleano representa um valor verdadeiro e a ausência do atributo representa um valor falso.
+  > A presença de um atributo boleano representa um valor verdadeiro e a ausência do atributo representa um valor falso.
 
-Se você precisa incluir valores nos atributos, você não precisa seguir esta regra do WhatWG:
+  Se você precisa incluir valores nos atributos, você não precisa seguir esta regra do WhatWG:
 
-> Se o atributo está presente, seu valor deve ser uma string vazia ou [...] o nome canônico do atributo, sem espaços em branco.
+  > Se o atributo está presente, seu valor deve ser uma string vazia ou [...] o nome canônico do atributo, sem espaços em branco.
 
-Resumindo, não adicione nenhum valor.
-{{/markdown}}
+  Resumindo, não adicione nenhum valor.
+  {{/markdown}}
   </div>
   <div class="column">
     {{md 'src/includes/html/boolean-attribute.md'}}
   </div>
 </section>
 
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Reducing Markup --}}
+{{!-- -------------------------------------------------------------------- --}}
+
 <section class="row html-reducing-markup">
   <div class="column">
-{{#markdown}}
-### Reduzindo o markup
-Sempre que possível, evite elementos pais supérfluos quando escrever HTML. Muitas vezes é necessário uma interação ou refatoração, mas isso produz pouco HTML. Veja o seguinte exemplo:
-{{/markdown}}
+  {{#markdown}}
+  ### Reduzindo o markup
+  Sempre que possível, evite elementos pais supérfluos quando escrever HTML. Muitas vezes é necessário uma interação ou refatoração, mas isso produz pouco HTML. Veja o seguinte exemplo:
+  {{/markdown}}
   </div>
   <div class="column">
     {{md 'src/includes/html/reducing-markup.md'}}
   </div>
 </section>
 
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Markup via Javascript --}}
+{{!-- -------------------------------------------------------------------- --}}
+
 <section class="row javascript">
   <div class="column">
-{{#markdown}}
-### Markup gerado por Javascript
-Escrever código em um arquivos Javascript faz com que o conteúdo seja difícil de ser encontrado, difícil de ser editado e o torna menos performático. Evite fazer isso o máximo possível.
-{{/markdown}}
+  {{#markdown}}
+  ### Markup gerado por Javascript
+  Escrever código em um arquivos Javascript faz com que o conteúdo seja difícil de ser encontrado, difícil de ser editado e o torna menos performático. Evite fazer isso o máximo possível.
+  {{/markdown}}
   </div>
 </section>

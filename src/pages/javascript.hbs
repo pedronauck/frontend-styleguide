@@ -1,3 +1,486 @@
 ---
 title: Javascript
 ---
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- JS Syntax --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<section class="row js-why-js">
+  <div class="column">
+{{#markdown}}
+### Porque Javascript?
+Javascript é muito conhecido por suas peculiaridades, [algumas delas](http://wtfjs.com/) consideradas um tanto quanto bizarras. Porém Javascript é uma linguagem extremamente poderosa e inclue uma série de idéias ótimas, como funções, objetos dinâmicos e notação literal de expressão de objetos.
+
+A importância de se usar Javascript está em seu ambiente. Hoje Javascript é a única linguagem universal para o mundo da web, ou seja, caso você queira trabalhar com esta plataforma, você será obrigado a aprender pelo menos o mínimo da linguagem.
+
+Este Guia de Javascript server para lhe ajudar a ter um código padrão e cheio de boas práticas, por isso leia ele até o final, por mais que você não se adeque aos padrões, tenho certeza que alguma coisa daqui você conseguirá tirar proveito.
+{{/markdown}}
+  </div>
+</section>
+
+<section class="row js-types">
+  <div class="column">
+{{#markdown}}
+### Tipos em Javascript
+Javascript é uma linguagem *loose typing* (tipagem fraca), ou seja, você não precisar definir o tipo de suas variáveis e ainda pode fazer operações entre os diferentes tipos. Para alguns isso implica em muitos erros e pode ser uma coisa ruim, para outros isso pode ser uma forma mais produtiva e "libertadora" de trabalhar.
+
+Em Javascript temos dois conjuntos de tipos, são os **Tipos Primitivos** e os **Tipos Complexos**, veja abaixo cada um deles:
+
+**Tipos Primitivos:**
+- `string`
+- `number`
+- `boolean`
+- `null`
+- `undefined`
+
+**Tipos Complexos:**
+- `object`
+- `array`
+- `function`
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/types.md'}}
+  </div>
+</section>
+
+<section class="row js-syntax">
+  <div class="column">
+  {{#markdown}}
+### Sintaxe
+- Como você já deve saber: Use soft-tabs com dois espaços.
+- Opte por remover automaticamente espaços em branco. Muitos editores de textos tem essa preferência automática.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/syntax.md'}}
+  </div>
+</section>
+
+<section class="row js-semicolons">
+  <div class="column">
+  {{#markdown}}
+### Uso ponto e vírgula?
+Sim.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/semicolons.md'}}
+  </div>
+</section>
+
+<section class="row js-blocks">
+  <div class="column">
+  {{#markdown}}
+### Blocos de Script
+Sempre que tiver múltiplas linhas use `{}`. Isto tornará seu código muito mais legível e de fácil entendimento. Do contrário, muitas pessoas não saberão aonde sua instrução começa e aonde ela termina.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/blocks.md'}}
+  </div>
+</section>
+
+<section class="row js-lint">
+  <div class="column">
+{{#markdown}}
+### Code Linting
+Usar um code linting em seu código fará com que você possa manter todos os seus padrões em dia de uma maneira automática e sem correr o risco de não seguir algumas convenções definidas.
+
+Há algumas opções no mercado, desde [automatizadores de tarefas](http://www.gruntjs.com) até [plugins para editores de texto](https://github.com/SublimeLinter/SublimeLinter3). Escolha o que melhor se encaixa no seu workflow, estude ele e aproveito o máximo.
+{{/markdown}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Variables --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<h3 class="title-sub">Variáveis</h3>
+
+<section class="row js-vars-global-namespaces">
+  <div class="column">
+  {{#markdown}}
+### Namespaces globais
+- Sempre use `var` para declarar suas variáveis. Caso contrário, você terá um monte de variáveis globais, e queremos evitar a poluição do nosso namespace global, certo?
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/vars-global-namespaces.md'}}
+  </div>
+</section>
+
+<section class="row js-vars-declarations">
+  <div class="column">
+{{#markdown}}
+### Declarando Variáveis
+- Use um `var` para declarar múltiplas variáveis e declare cada uma em uma nova linha. Declare as variavéis não definidas por último.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src//includes/js/vars-declarations.md'}}
+  </div>
+</section>
+
+<section class="row js-vars-naming">
+  <div class="column">
+{{#markdown}}
+### Nomeando variáveis
+Para facilitar a manutenção no seu código, evite complicar e criar coisas misteriosas que só você sabe o que é, seja simples e bem declarativo.
+
+- Evite usar nomes misteriosos, por favor! Tenta a palavra literalmente.
+- Use <code>$</code> para criar referência de objetos DOM em uma variável. Assim ficará fácil identificar quando uma variável é uma referência a um objeto DOM ao longo do seu código.
+- Use `camelCase` quando nomear objectos, funções e instâncias.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src//includes/js/vars-naming.md'}}
+  </div>
+</section>
+
+<section class="row js-vars-constants">
+  <div class="column">
+{{#markdown}}
+### Constantes
+Caso você tenha alguma constante em sua aplicação, opte por escreve-lá usando o padrão `UPPERCASE`, assim você facilitará a leitura do seu código para outras pessoas, pois quando alguém ver alguma variável declarada com este padrão, saberá que aquilo é uma constante.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src//includes/js/vars-constants.md'}}
+  </div>
+</section>
+
+<section class="row js-vars-strings">
+  <div class="column">
+  {{#markdown}}
+### Strings
+- Prefira aspas simples ao invés de aspas duplas
+- Cores hexadecimais sempre usando caixa alta, nunca caixa baixa.
+- Strings maiores que 80 caracteres devem ser quebradas entre multiplas linhas usando concatenação de strings.
+- Deixe espaços entre os simbolos de `+` quando concatenar strings.
+- Quando usar uma técnica de concatenação de strings, faça uma identação alinhada verticalmente para facilitar a leitura.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/vars-strings.md'}}
+  </div>
+</section>
+
+<section class="row js-vars-commas">
+  <div class="column">
+  {{#markdown}}
+### Vírgulas
+- Commas first? Não, obrigado!
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/vars-commas.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Arrays --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<h3 class="title-sub">Arrays</h3>
+
+<section class="row js-arrays-creating">
+  <div class="column">
+{{#markdown}}
+### Criando Arrays
+- Use a sintaxe literal para criar novos arrays.
+- Para acrescentar um item no final de array, use `Array#push`.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/arrays-creating.md'}}
+  </div>
+</section>
+
+<section class="row js-arrays-copying">
+  <div class="column">
+{{#markdown}}
+### Copiando Arrays
+Quando você precisar de uma cópia de um array use `Array#slice`.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/arrays-copying.md'}}
+  </div>
+</section>
+
+<section class="row js-arrays-converting">
+  <div class="column">
+{{#markdown}}
+### Convertendo Objetos em Array
+Para converter um objeto como array para um array, use `Array#slice`.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/arrays-converting.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Functions --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<h3 class="title-sub">Funções</h3>
+
+<section class="row js-functions-types">
+  <div class="column">
+{{#markdown}}
+### Tipos de funções
+Funções são um tipo muito poderoso em Javascript. Você pode usá-las para fazer muitas coisas, como definir métodos privados e públicos de objetos e também criar funções reutilizáveis durante sua aplicação.
+
+Conheça alguns dos tipos de funções disponíveis:
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/functions-types.md'}}
+  </div>
+</section>
+
+<section class="row js-functions-define">
+  <div class="column">
+{{#markdown}}
+### Definindo funções
+Existe algumas maneiras de se criar uma função, para cada maneira há um cenário mais adequado. Isso dependerá muito do pattern que você está seguindo. Porém existe alguns padrões que devemos seguir:
+
+- Evite nomear funções com apenas uma letra. Seja bem descritivo quando for nomear suas funções.
+- Use `{}` ao lado da expresão, nunca embaixo.
+- Caso crie uma função no modo literal use `;`, caso contrário não.
+- Opte por sempre nomear suas funções.
+- Não use espaço antes dos `()` para declarar suas funções.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/functions-define.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Objects --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<h3 class="title-sub">Objetos</h3>
+
+<section class="row js-objects-creating">
+  <div class="column">
+{{#markdown}}
+### Criando objetos
+- Opte sempre por usar a sintaxe literal para criar objetos.
+- Não use [palavras reservadas](http://es5.github.io/#x7.6.1.1) como chaves.
+- Use sinônimos legíveis no lugar de palavras reservadas.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/objects-creating.md'}}
+  </div>
+</section>
+
+<section class="row js-objects-accessing">
+  <div class="column">
+{{#markdown}}
+### Acessando Objetos
+Você pode acessar uma propriedade de um objeto de várias maneiras, porém a maneira mais adequada é usando `.` ao invés de `[]`.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/objects-accessing.md'}}
+  </div>
+</section>
+
+<section class="row js-objects-checking-boolean">
+  <div class="column">
+{{#markdown}}
+### Checkando Propriedades Boleanas
+Caso você queira checar se uma propriedade de um objeto existe, crie um método que retorne a propriedade. Suas instruções se tornarãm muito mais legível ao decorrer do código.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/objects-checking-boolean.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Constructors --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<h3 class="title-sub">Construtores</h3>
+
+<section class="row js-constructors-naming">
+  <div class="column">
+{{#markdown}}
+### Definindo Construtores
+Funções construtoras em Javascript servem para simular a criação de uma classe, porém Javascript não tem classes, mas sim objetos. Caso opte por uma abordagem OOP (Object-oriented Programming), siga:
+
+- Declare suas funções construtoras usando `PascalCase`.
+- Use `_` para definir seus métodos e propriedades privados.
+- Quando salvar uma referência ao `this` use `_this`. Evite self, that ou qualquer outra coisa, ok?
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/constructors-naming.md'}}
+  </div>
+</section>
+
+<section class="row js-constructors-namespaces">
+  <div class="column">
+{{#markdown}}
+### Namespaces Internos e Métodos Privados
+Quando você usar Constructor Pattern, use um namespace para criar metódos internos e retorne os metódos da sua API chamando estes métodos. Não se esqueça de usar `_` para definir seus métodos privados.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/constructors-namespaces.md'}}
+  </div>
+</section>
+
+<section class="row js-constructors-prototype">
+  <div class="column">
+{{#markdown}}
+### Prototypes
+Atribua métodos para o objeto `Prototype` do seu construtor, ao invés de sobrescrever o prototype com um novo objeto. Pois sobrescrevendo o prototype fica impossível fazer herança.
+
+**Para mais informações sobre herança em Javascript veja:**
+
+- [Herança em JavaScript parte I](http://loopinfinito.com.br/2012/05/04/heranca-em-javascript-parte-1/)
+- [Herança em JavaScript parte II](http://loopinfinito.com.br/2013/02/05/heranca-em-javascript-parte-2/)
+- [Classical Inheritance in JavaScript](http://www.crockford.com/javascript/inheritance.html)
+- [Inheritance and the prototype chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain)
+- [Understanding JavaScript Inheritance](https://alexsexton.com/blog/2013/04/understanding-javascript-inheritance/)
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/constructors-prototype.md'}}
+  </div>
+</section>
+
+<section class="row js-constructors-getters-setters">
+  <div class="column">
+{{#markdown}}
+### Getters and Setters
+Para uma abordagem mais ampla e para criar objetos mais "inteligentes" e de fácil compreensão, o ideal é que você crie métodos getters/setters para seus objetos. Porém seja consistente na criação de seus getters/setters.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/constructors-getters-setters.md'}}
+  </div>
+</section>
+
+<section class="row js-constructors-chain-methods">
+  <div class="column">
+{{#markdown}}
+### Chain Methods (Métodos encadeados)
+Uma opção muito útil quando estamos definindo métodos dos nossos construtores é retornar o objeto `this` para à criação de [chain methods](http://en.wikipedia.org/wiki/Method_chaining). A famosa biblioteca [jQuery](http://www.jquery.com) usa muito este conceito. Veja um exemplo:
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/constructors-chain-methods.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Conditional Expressions & Equality --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<h3 class="title-sub">Expressões Condicionais & Igualdade</h3>
+
+<section class="row js-conditionals-expressions">
+  <div class="column">
+{{#markdown}}
+Expressões condicionais são avaliadas por meio de coersão com o método `ToBoolean` e sempre seguindo estas simples regras:
+
+- **Objects** são avaliados como **true**
+- **Undefined** são avaliados como **false**
+- **Null** é avaliado como **false**
+- **Booleans** são avaliados como **o valor boleano definido**
+- **Numbers** são avaliados como **false** se **+0, -0, or NaN**, caso contrário são **true**
+- **Strings** são avaliadas como **false** se for **uma string vazia** `''`, caso contrário é **true**
+
+**As convenções relacionadas às Expressões Condicionais são:**
+
+- Use `===` e `!==` ao invés de `==` e `!=` sempre.
+- Abrevie suas declarações com atalhos.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/conditionals-expressions.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Loops --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<h3 class="title-sub">Loops</h3>
+
+<section class="row js-loops">
+  <div class="column">
+{{#markdown}}
+Loops podem ser um bixo de sete cabeças dentro da sua aplicação e acaba sendo um fatores principais de performance, por isso preste atenção quando for trabalhar com eles.
+
+- Sempre declare seus loops em múltiplas linhas para facilitar o entendimento de quais ações seu loop está gerenciando
+- Para uma melhor performance, declare as váriaveis fora do loop. Assim seu script não precisa chegar o valor a cada iteração.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/loops.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Whitespaces --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<h3 class="title-sub">Espaços em Branco</h3>
+
+<section class="row js-whitespaces-rules">
+  <div class="column">
+{{#markdown}}
+### Regras Gerais
+- Coloque espaços entre os operadores.
+- Sempre coloque um espaço antes de iniciar um `{}`.
+- Coloque espaços fora dos `()`, porém evite colocar dentro.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/whitespaces-rules.md'}}
+  </div>
+</section>
+
+<section class="row js-whitespaces-chain">
+  <div class="column">
+{{#markdown}}
+### Idente seus Chain Methods
+Opte por sempre identar seus chain methods (métodos encadeados), pois assim voê tornará seu código mais legível e evitará que ele quebre em mais que 80 caracteres.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/whitespaces-chain.md'}}
+  </div>
+</section>
+
+{{!-- -------------------------------------------------------------------- --}}
+{{!-- Comments --}}
+{{!-- -------------------------------------------------------------------- --}}
+
+<h3 class="title-sub">Comentários</h3>
+
+<section class="row js-comments">
+  <div class="column">
+{{#markdown}}
+Comentários podem ajudar você a manter um código colaborativo e de fácil manutenção, porém cuide com algumas convenções.
+
+- Use `//` apenas para comentários de uma única linha.
+- Nunca coloque o comentário ao lado do código, sempre acima.
+- Deixe uma linha de espaço sempre antes do comentário.
+- Use `/* */` para comentários com múltiplas linhas. Incluindo uma descrição, especificando tipos e valores para parâmetros e valores de retorno. Tente ser o mais declarativo possível, passando exatamente a real função do seu código. Não apenas citando coisas óbvias.
+{{/markdown}}
+  </div>
+  <div class="column">
+    {{md 'src/includes/js/comments.md'}}
+  </div>
+</section>
