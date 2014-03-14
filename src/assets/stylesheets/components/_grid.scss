@@ -5,6 +5,7 @@
 // ----------------------------------------------------------------------------
 
 $column-right-bg: lighten($body-bg, 3%);
+$column-border-color: lighten($body-bg, 5%);
 
 // ----------------------------------------------------------------------------
 //  Classes
@@ -15,14 +16,14 @@ $column-right-bg: lighten($body-bg, 3%);
 }
 
 .column {
-  padding: $global-margin;
+  padding: $global-margin ($global-margin / 2);
 }
 
 .column ~ .column {
   background-color: $column-right-bg;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 64rem) {
   .row {
     display: table;
     width: 100%;
@@ -32,6 +33,7 @@ $column-right-bg: lighten($body-bg, 3%);
   .column {
     display: table-cell;
     vertical-align: top;
+    padding: $global-margin;
   }
 }
 

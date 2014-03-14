@@ -57,3 +57,10 @@ $navigation-border: 1px solid $navigation-border-color;
 .navigation-item a:hover img {
   @include opacity(1);
 }
+
+@media (max-width: 30rem) {
+  .navigation-item a {
+    padding-top: ($global-margin / 4);
+    padding-bottom: ($global-margin / 4);
+  }
+}

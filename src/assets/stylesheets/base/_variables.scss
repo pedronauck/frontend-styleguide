@@ -39,7 +39,7 @@ $color-waiting: #E6CB61;
 $text-color: lighten($body-bg, 50%);
 $input-color: $color-medium-soft;
 
-$link-color: desaturate($color-primary, 15%);
+$link-color: desaturate($color-success, 15%);
 $link-hover-color: lighten($link-color, 10%);
 $link-active-color: darken($link-color, 10%);
 

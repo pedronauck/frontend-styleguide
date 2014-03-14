@@ -1,0 +1,50 @@
+// ----------------------------------------------------------------------------
+//
+//  Components > Title
+//
+// ----------------------------------------------------------------------------
+
+$title-main-bg: lighten($body-bg, 7%);
+$title-sub-bg: lighten($body-bg, 3%);
+$title-color: lighten($body-bg, 40%);
+$title-border: 1px solid black(.1);
+$title-box-shadow: 0 2px 6px black(.1);
+
+// ----------------------------------------------------------------------------
+//  Main Title
+// ----------------------------------------------------------------------------
+
+%title {
+  position: relative;
+  font-weight: 100;
+  color: $title-color;
+  border-bottom: $title-border;
+  @include box-shadow($title-box-shadow);
+  padding: 0 $global-margin;
+  margin: 0;
+}
+
+.title-main {
+  @extend %title;
+  font-size: flex(48px);
+  background: $title-main-bg;
+  padding-top: $global-margin;
+  padding-bottom: $global-margin;
+  z-index: 99;
+}
+
+.title-sub {
+  @extend %title;
+  font-weight: 400;
+  background: $title-sub-bg;
+  padding-top: $global-margin / 1.5;
+  padding-bottom: $global-margin / 1.5;
+  z-index: 98;
+}
+
+@media (min-width: 48rem) {
+  .main-title {
+    font-size: flex(54px);
+    padding: $global-margin;
+  }
+}

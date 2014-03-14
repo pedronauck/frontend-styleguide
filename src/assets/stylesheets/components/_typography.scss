@@ -215,7 +215,7 @@ code {
 
 ul, ol, dl {
   line-height: $paragraph-line-height;
-  margin-bottom: $paragraph-margin-bottom;
+  margin-bottom: $paragraph-margin-bottom / 2;
   list-style-position: $list-style-position;
 }
 
