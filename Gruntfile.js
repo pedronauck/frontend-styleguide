@@ -9,7 +9,7 @@ module.exports = function(grunt) {
     watch: {
       assemble: {
         files: [
-          '<%= site.app %>/{layouts,partials,pages}/{,*/}*.{md,hbs,yml}'
+          '<%= site.app %>/{layouts,partials,pages,includes}/{,*/}*.{md,hbs,yml}'
         ],
         tasks: ['assemble']
       },
@@ -75,7 +75,11 @@ module.exports = function(grunt) {
       dist: {
         options: { separator: ";\n" },
         files: {
-          '<%= site.dist %>/js/application.js': ['<%= site.js %>/**/*.js']
+          '<%= site.dist %>/js/application.js': [
+            '<%= site.js %>/vendor/jquery.js',
+            '<%= site.js %>/vendor/prism.js',
+            '<%= site.js %>/app.js'
+          ]
         }
       }
     },
