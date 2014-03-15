@@ -1,4 +1,4 @@
-![](http://f.cl.ly/items/2l0u1s0b0R2X0K253w30/github_image.png)
+![](http://f.cl.ly/items/2i3X1i3I2s3i2q2r3u1A/github_image.png)
 
 > Escrever códigos é o que fazemos todos os dias. Porém muitos desses códigos não vão passar apenas por uma única pessoa, mas sim por muitas. Por isso criamos esse guia, para que você possa manter um padrão de convenções e boas práticas para que seu código seja o mais declarativo possível e que ele possa ter um brilho natural.
 
