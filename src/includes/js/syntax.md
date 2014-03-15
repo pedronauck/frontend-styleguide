@@ -1,7 +1,7 @@
 ```javascript
 // Ruim
 function() {
-    var name = "John Doe";
+    var name = 'John Doe';
 }
 
 // Bom

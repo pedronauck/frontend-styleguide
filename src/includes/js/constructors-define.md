@@ -8,7 +8,7 @@ function user(options) {
   };
 }
 
-var user = new User({name: "John Doe"});
+var user = new User({name: 'John Doe'});
 
 // Bom
 function User(options) {
@@ -19,5 +19,5 @@ function User(options) {
   };
 }
 
-var user = new User({name: "John Doe"});
+var user = new User({name: 'John Doe'});
 ```
