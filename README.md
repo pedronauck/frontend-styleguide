@@ -6,7 +6,7 @@
 
 ## Faça seu Fork!
 
-Um padrão é algo determinado por uma ou por algumas pessoas. Não existe o melhor ou o pior padrão, existe aquele que você mais se adequar. Por isso, caso você não se interesse por este guia de estilo, você pode fazer um fork e criar o seu próprio guia de estilo do jeito que melhor se conver.
+Um padrão é algo determinado por uma ou por algumas pessoas. Não existe o melhor ou o pior padrão, existe aquele que você mais se adequar. Definitivamente, o intuito desse guia não é dizer qual é o melhor padrão a seguir. Por isso, caso você não se interesse por este guia de estilo, você pode fazer um fork e criar o seu próprio guia de estilo do jeito que melhor lhe conver.
 
 **Vamos as instruções:**
 
