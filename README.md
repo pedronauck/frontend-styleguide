@@ -48,9 +48,9 @@ src/
 ├── partials/
 ```
 
-- `_config.yml`: Arquivo contendo as metadatas do projetos
-- `_deploy-config.yml`: Configurações de deploy via `grunt-ftp-deploy`
-- `config.rb`: Configurações de build do Compass
+- `_config.yml`: Arquivo contendo as metadatas do projetos, como diretório que será feito o build e outras configs.
+- `_deploy-config.yml`: Configurações default para as definições da task `ftp-deploy`.
+- `config.rb`: Configurações de build do Compass.
 
 ## Licença
 
