@@ -78,6 +78,7 @@ module.exports = function(grunt) {
           '<%= site.dist %>/js/application.js': [
             '<%= site.js %>/vendor/jquery.js',
             '<%= site.js %>/vendor/prism.js',
+            '<%= site.js %>/vendor/stellar.js',
             '<%= site.js %>/app.js'
           ]
         }
@@ -106,6 +107,21 @@ module.exports = function(grunt) {
       }
     },
 
+    htmlmin: {
+      dist: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: {
+          '<%= site.dist %>/index.html': '<%= site.dist %>/index.html',
+          '<%= site.dist %>/html/index.html': '<%= site.dist %>/html/index.html',
+          '<%= site.dist %>/css/index.html': '<%= site.dist %>/css/index.html',
+          '<%= site.dist %>/javascript/index.html': '<%= site.dist %>/javascript/index.html'
+        }
+      }
+    },
+
     copy: {
       main: {
         files: [{
@@ -113,6 +129,11 @@ module.exports = function(grunt) {
           cwd: '<%= site.images %>',
           src: '**/*',
           dest: '<%= site.dist %>/images'
+        }, {
+          expand: true,
+          cwd: '<%= site.fonts %>',
+          src: '**/*',
+          dest: '<%= site.dist %>/fonts'
         }]
       }
     },
@@ -133,6 +154,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
   grunt.registerTask('jsmin', [
     'concat',
@@ -145,13 +167,14 @@ module.exports = function(grunt) {
     'jsmin',
     'assemble',
     'copy',
-    'imagemin'
+    'imagemin',
+    'htmlmin'
   ]);
 
   grunt.registerTask('server', [
     'clean',
     'compass:dist',
-    'jsmin',
+    'concat',
     'assemble',
     'copy',
     'connect:livereload',
