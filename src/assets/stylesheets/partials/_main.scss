@@ -1,0 +1,15 @@
+// ----------------------------------------------------------------------------
+//
+//  Partials > Main
+//
+// ----------------------------------------------------------------------------
+
+.main {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.content {
+  @include transition(transform .3s);
+  @include translateX(0);
+}

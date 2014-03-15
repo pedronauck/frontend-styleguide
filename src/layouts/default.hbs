@@ -6,7 +6,12 @@
   <title>{{ title }} | FrontEnd Style Guide</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <meta property="og:title" content="FrontEnd Style Guide">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://pedronauck.com/frontend-styleguide">
+  <meta property="og:image" content="http://f.cl.ly/items/3k3r2u0i15162p2c1o1a/Screen%20Shot%202014-03-14%20at%2013.47.53.png">
+
   <link rel="stylesheet" href="{{assets}}/css/style.css">
 </head>
 <body>
@@ -14,12 +19,7 @@
   {{> navigation}}
 
   <main class="main">
-    <h2 class="title-main">
-      {{title}}
-    </h2>
     {{> body }}
   </main>
-
-  {{> footer}}
 </body>
 </html>
