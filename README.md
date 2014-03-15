@@ -51,3 +51,11 @@ src/
 - `_config.yml`: Arquivo contendo as metadatas do projetos
 - `_deploy-config.yml`: Configurações de deploy via `grunt-ftp-deploy`
 - `config.rb`: Configurações de build do Compass
+
+## Licença
+
+[MIT License](http://opensource.org/licenses/MIT). Copyright 2014, @pedronauck.
+
+## Agradecimentos
+
+Este guia foi feito com base no [Code Guide do @mdo](https://github.com/mdo/code-guide) para o que se refere à HTML e CSS, juntamente com conceitos do [AirBNB Javascript Style Guide](https://github.com/airbnb/javascript) para as convenções de Javascript.
