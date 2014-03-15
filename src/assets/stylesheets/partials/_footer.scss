@@ -12,8 +12,9 @@ $footer-margin: $global-margin / 2;
 // ----------------------------------------------------------------------------
 
 .footer {
+  font-size: flex(13px);
 	color: lighten($footer-background, 15%);
-	font-size: flex(13px);
+  line-height: 2;
 	text-align: center;
 	background: $footer-background;
 	padding: $footer-margin 0;

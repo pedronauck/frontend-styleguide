@@ -5,7 +5,7 @@
 // ----------------------------------------------------------------------------
 
 $navigation-item-color: white(.7);
-$navigation-item-bg: $header-bg;
+$navigation-item-bg: darken($body-bg, 5%);
 $navigation-border-color: lighten($body-bg, 4%);
 $navigation-border: 1px solid $navigation-border-color;
 

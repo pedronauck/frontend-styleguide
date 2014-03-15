@@ -11,7 +11,7 @@ $btn-bg-secondary: desaturate($color-secondary, $base-factor * 2);
 $btn-bg-waiting: desaturate($color-waiting, $base-factor * 2);
 $btn-bg-success: desaturate($color-success, $base-factor * 2);
 $btn-bg-error: desaturate($color-error, $base-factor * 2);
-$btn-bg-hard: desaturate($color-hard, $base-factor * 2);
+$btn-bg-hard: $body-bg;
 
 // border properties
 $btn-border-width: 0;

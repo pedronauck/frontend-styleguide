@@ -12,17 +12,70 @@ $header-bg: darken($body-bg, 5%);
 // ----------------------------------------------------------------------------
 
 .header {
-	background: $header-bg;
-  padding: ($global-margin * 1.5) 0;
+  position: relative;
+  background: rgba($header-bg, .7);
+  padding: ($global-margin * 0.8) 0;
+
+  &::after {
+    content: "";
+    background: url(../images/header-bg.jpg) no-repeat top center;
+    background-size: cover;
+    background-attachment: fixed;
+    @include background-size(100% auto);
+    opacity: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  }
 
   .logo {
-    font-weight: 700;
-    text-transform: uppercase;
-    text-align: center;
-    margin: 0;
+    width: 70%;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+    }
   }
 
   .logo a {
     color: white;
+  }
+}
+
+@media (min-width: 45em) {
+  .header .logo {
+    width: 50%;
+  }
+}
+
+@media (min-width: 64em) {
+  .header .logo {
+    width: 40%;
+  }
+}
+
+@media (min-width: 80em) {
+  .header {
+    padding: $global-margin 0;
+  }
+  .header .logo {
+    width: 30%;
+  }
+}
+
+.header .share-buttons {
+  display: table;
+  margin: 20px auto 0 auto;
+
+  .fb-share-button {
+    margin-top: -5px;
+    margin-right: 20px;
+  }
+
+  .twitter-share-button {
+    width: 110px !important;
   }
 }
