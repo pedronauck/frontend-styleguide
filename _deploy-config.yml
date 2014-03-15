@@ -1,0 +1,8 @@
+# =============================================
+# Deploy Configurations
+# =============================================
+
+port:               21
+url:                pedronauck.com
+path:               /frontend-styleguide
+dest:               /public_html/<%= deploy.path %>

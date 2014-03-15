@@ -1,24 +1,28 @@
 'use strict';
 module.exports = function(grunt) {
   require('time-grunt')(grunt);
+  require('matchdep')
+    .filterAll(['*','!grunt', '!time-grunt', '!assemble-*', '!matchdep'])
+    .forEach(grunt.loadNpmTasks);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     site: grunt.file.readYAML('_config.yml'),
+    deploy: grunt.file.readYAML('_deploy-config.yml'),
 
     watch: {
       assemble: {
         files: [
           '<%= site.app %>/{layouts,partials,pages,includes}/{,*/}*.{md,hbs,yml}'
         ],
-        tasks: ['assemble']
+        tasks: ['assemble:development']
       },
       js: {
         files: '<%= site.js %>/**/*.js',
         tasks: ['concat', 'uglify']
       },
       compass: {
-        files: ['<%= site.sass%>/**/*.{scss,sass,css}'],
+        files: ['<%= site.sass %>/**/*.{scss,sass,css}'],
         tasks: ['compass']
       },
       livereload: {
@@ -49,33 +53,38 @@ module.exports = function(grunt) {
     },
 
     assemble: {
-      pages: {
-        options: {
-          flatten: true,
-          assets: '<%= site.assets %>',
-          layout: '<%= site.layouts %>/default.hbs',
-          partials: '<%= site.partials %>/**/*.hbs',
-          plugins: ['assemble-contrib-permalinks'],
-          permalinks: {
-            structure: ':basename/index.html'
-          }
-        },
-        files: {
-          '<%= site.dist %>/': ['<%= site.app %>/pages/*.hbs']
+      options: {
+        flatten: true,
+        layout: '<%= site.layouts %>/default.hbs',
+        partials: '<%= site.partials %>/**/*.hbs',
+        plugins: ['assemble-contrib-permalinks'],
+        permalinks: {
+          structure: ':basename/index.html'
         }
+      },
+      development: {
+        options: {
+          sitePath: 'http://127.0.0.1:9000',
+          assets: '<%= site.dist %>/<%= site.assets %>'
+        },
+        files: {'<%= site.dist %>/': ['<%= site.app %>/pages/*.hbs']}
+      },
+      production: {
+        options: {
+          sitePath: '<%= deploy.path %>',
+          assets: '<%= deploy.path %>/<%= site.assets %>'
+        },
+        files: {'<%= site.dist %>/': ['<%= site.app %>/pages/*.hbs']}
       }
     },
 
-    clean: [
-      '<%= site.dist %>/**/*.{html,xml,css,png,jpg,gif,svg,js}'
-    ],
+    clean: ['<%= site.dist %>/**/*.{html,xml,css,png,jpg,gif,svg,js,gz}'],
 
-    // concatenate scripts
     concat: {
       dist: {
         options: { separator: ";\n" },
         files: {
-          '<%= site.dist %>/js/application.js': [
+          '<%= site.dist %>/<%= site.assets %>/js/application.js': [
             '<%= site.js %>/vendor/jquery.js',
             '<%= site.js %>/vendor/prism.js',
             '<%= site.js %>/vendor/stellar.js',
@@ -85,12 +94,11 @@ module.exports = function(grunt) {
       }
     },
 
-    // minification the javascripts scripts
     uglify: {
       dist: {
         files: {
-          '<%= site.dist %>/js/application.js': [
-            '<%= site.dist %>/js/application.js'
+          '<%= site.dist %>/<%= site.assets %>/js/application.min.js': [
+            '<%= site.dist %>/<%= site.assets %>/js/application.js'
           ]
         }
       }
@@ -100,9 +108,9 @@ module.exports = function(grunt) {
       dynamic: {
         files: [{
           expand: true,
-          cwd: '<%= site.dist %>/images',
+          cwd: '<%= site.dist %>/<%= site.assets %>/images',
           src: ['**/*.{png,jpg,gif}'],
-          dest: '<%= site.dist %>/images'
+          dest: '<%= site.dist %>/<%= site.assets %>/images'
         }]
       }
     },
@@ -122,18 +130,30 @@ module.exports = function(grunt) {
       }
     },
 
+    compress: {
+      main: {
+        options: {
+          mode: 'gzip'
+        },
+        expand: true,
+        cwd: '<%= site.dist %>/',
+        src: ['**/*'],
+        dest: '<%= site.dist %>/'
+      }
+    },
+
     copy: {
       main: {
         files: [{
           expand: true,
           cwd: '<%= site.images %>',
           src: '**/*',
-          dest: '<%= site.dist %>/images'
+          dest: '<%= site.dist %>/<%= site.assets %>/images'
         }, {
           expand: true,
           cwd: '<%= site.fonts %>',
           src: '**/*',
-          dest: '<%= site.dist %>/fonts'
+          dest: '<%= site.dist %>/<%= site.assets %>/fonts'
         }]
       }
     },
@@ -142,43 +162,54 @@ module.exports = function(grunt) {
       dist: {
         options: { config: './config.rb' }
       }
+    },
+
+    'ftp-deploy': {
+      build: {
+        auth: {
+          host: '<%= deploy.url %>',
+          port: '<%= deploy.port %>',
+          authKey: 'key1'
+        },
+        src: '<%= site.dist %>',
+        dest: '<%= deploy.dest %>',
+        exclusions: [
+          '<%= site.dist %>/**/.DS_Store',
+          '<%= site.dist %>/**/Thumbs.db'
+        ]
+      }
     }
   });
-
-  grunt.loadNpmTasks('assemble');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
   grunt.registerTask('jsmin', [
     'concat',
     'uglify'
   ])
 
-  grunt.registerTask('build', [
-    'clean',
-    'compass:dist',
-    'jsmin',
-    'assemble',
-    'copy',
-    'imagemin',
-    'htmlmin'
-  ]);
-
   grunt.registerTask('server', [
     'clean',
+    'assemble:development',
     'compass:dist',
     'concat',
-    'assemble',
     'copy',
     'connect:livereload',
     'watch'
+  ]);
+
+  grunt.registerTask('build', [
+    'clean',
+    'assemble:production',
+    'compass:dist',
+    'jsmin',
+    'copy',
+    'imagemin',
+    'htmlmin',
+    'compress'
+  ]);
+
+  grunt.registerTask('deploy', [
+    'build',
+    'ftp-deploy'
   ]);
 
   grunt.registerTask('default', [

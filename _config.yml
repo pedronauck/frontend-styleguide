@@ -1,12 +1,12 @@
 # =============================================
-# PROJECT METADATA
+# Project Metadata
 # =============================================
 
 dist:              ./dist
 app:               ./src
 
-css:               <%= site.production %>/css
-assets:            <%= site.production %>
+css:               <%= site.dist %>/assets/css
+assets:            /assets
 
 sass:              <%= site.app %>/assets/stylesheets
 images:            <%= site.app %>/assets/images
