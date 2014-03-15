@@ -18,7 +18,7 @@ Um padrão é algo determinado por uma ou por algumas pessoas. Não existe o mel
 $ npm install
 ```
 
-3 - Estamos usando o [Assemble.io](http://www.assemble.io), um gerador de sites estáticos para rodar a aplicação. O Assemble usa no seu core o GruntJS para gerenciar o gerador, por isso alguns comandos são necessários para você montar seu guia de estilo.
+3 - Estamos usando o [Assemble.io](http://www.assemble.io), um gerador de sites estáticos para rodar a aplicação. O Assemble usa na sua essência o GruntJS para funcionar, por isso alguns comandos são necessários para você montar seu guia de estilo.
 
 | comando      |      descrição      |
 |--------------|-------------|
