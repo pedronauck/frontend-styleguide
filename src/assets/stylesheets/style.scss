@@ -10,13 +10,16 @@
 @import "core/basic";
 @import "core/typography";
 
+@import "components/icons";
 @import "components/grid";
 @import "components/typography";
 @import "components/titles";
 @import "components/buttons";
+@import "components/toc-nav";
 
 @import "partials/header";
 @import "partials/footer";
 @import "partials/navigation";
+@import "partials/main";
 
 @import "vendor/prism";
