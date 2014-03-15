@@ -1,0 +1,137 @@
+// ----------------------------------------------------------------------------
+//
+//  Components > Navigation TOC
+//
+// ----------------------------------------------------------------------------
+
+$toc-nav-width: 300px;
+$toc-nav-padding: 50px;
+$toc-nav-bg: lighten($body-bg, 15%);
+$toc-nav-border: 2px solid $body-bg;
+$toc-nav-margin: $global-margin / 2;
+$toc-nav-item-hover: lighten($toc-nav-bg, 5%);
+
+// ----------------------------------------------------------------------------
+//  Classes
+// ----------------------------------------------------------------------------
+.toc-nav {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $toc-nav-width;
+  height: 100%;
+  background: $toc-nav-bg;
+  border-right: $toc-nav-border;
+  @include text-shadow(0 1px 0 black(.1));
+  @include translateX(-($toc-nav-width - $toc-nav-padding));
+  overflow-x: auto;
+  z-index: 9999;
+  padding: 0;
+
+  .menu {
+    @include translateX(-($toc-nav-padding));
+  }
+
+  &.is-visible {
+    @include animation(showTocNav .3s);
+    @include translateX(0);
+
+    .menu {
+      @include translateX(0);
+    }
+  }
+
+  &.is-hidden {
+    @include animation(hideTocNav .3s);
+    @include translateX(-($toc-nav-width - $toc-nav-padding));
+  }
+
+  &.is-fixed {
+    position: fixed;
+  }
+}
+
+@include keyframes(showTocNav) {
+  from {
+    @include translateX(-($toc-nav-width - $toc-nav-padding));
+  }
+  to {
+    @include translateX(0);
+  }
+}
+
+@include keyframes(hideTocNav) {
+  from {
+    @include translateX(0);
+  }
+  to {
+    @include translateX(-($toc-nav-width - $toc-nav-padding));
+  }
+}
+
+// ----------------------------------------------------------------------------
+//  Content
+// ----------------------------------------------------------------------------
+.toc-nav.is-visible ~ .content {
+  @include translateX($toc-nav-width - 50px);
+}
+
+.toc-nav ~ .content,
+.toc-nav.is-hidden ~ .content {
+  @include translateX(0);
+  padding-left: $toc-nav-padding;
+}
+
+
+// ----------------------------------------------------------------------------
+//  Nav Title
+// ----------------------------------------------------------------------------
+.toc-nav .nav-title {
+  font-weight: 700;
+  font-size: flex(14px);
+  line-height: 2;
+  color: lighten($toc-nav-bg, 20%);
+  text-transform: uppercase;
+  background: #323945;
+  border-bottom: $toc-nav-border;
+  margin: 0;
+  padding: ($toc-nav-margin / 2);
+
+  .btn-show-toc {
+    float: right;
+    font-size: flex(32px);
+    color: $text-color;
+    line-height: 1.3;
+  }
+}
+
+// ----------------------------------------------------------------------------
+//  Toc Menu
+// ----------------------------------------------------------------------------
+.toc-nav .menu {
+  font-size: flex(14px);
+  @include list-nostyle;
+}
+
+.toc-nav .menu-item a {
+  display: block;
+  color: $text-color;
+  line-height: 2;
+  border-bottom: 1px solid $toc-nav-item-hover;
+  @include transition(background .3s);
+  padding: 0 ($toc-nav-margin / 2);
+}
+
+.toc-nav .menu-item a:hover {
+  background: $toc-nav-item-hover;
+}
+
+.toc-nav .submenu {
+  @include list-nostyle;
+
+  .menu-item a {
+    color: darken($text-color, 10%);
+    padding-left: ($toc-nav-margin * 1.5);
+  }
+}
