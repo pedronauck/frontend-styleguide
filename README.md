@@ -48,6 +48,7 @@ src/
 ├── partials/
 ```
 
+- `includes/`: Dentro deste diretório se encontra os arquivos de exemplo de código referente à cada sessão.
 - `_config.yml`: Arquivo contendo as metadatas do projetos, como diretório que será feito o build e outras configs.
 - `_deploy-config.yml`: Configurações default para as definições da task `ftp-deploy`.
 - `config.rb`: Configurações de build do Compass.
