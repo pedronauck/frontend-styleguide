@@ -18,7 +18,13 @@ Um padrão é algo determinado por uma ou por algumas pessoas. Não existe o mel
 $ npm install
 ```
 
-3 - Estamos usando o [Assemble.io](http://www.assemble.io), um gerador de sites estáticos para rodar a aplicação. O Assemble usa na sua essência o GruntJS para funcionar, por isso alguns comandos são necessários para você montar seu guia de estilo.
+3 - Precisamos instalar também a gem do [Compass](http://compass-style.org/) que fará o build do nosso css.
+
+```bash
+$ sudo gem intall compass
+```
+
+4 - Estamos usando o [Assemble.io](http://www.assemble.io), um gerador de sites estáticos para rodar a aplicação. O Assemble usa na sua essência o GruntJS para funcionar, por isso alguns comandos são necessários para você montar seu guia de estilo.
 
 | comando      |      descrição      |
 |--------------|-------------|
@@ -28,7 +34,7 @@ $ npm install
 
 **OBS:** As configurações para deploy estão definidas dentro do arquivo `_deploy-config.yml`, altere este arquivo para fazer o deploy da sua aplicação. Para você poder fazer um deploy corretamente via ftp, você precisa criar um arquivo `.ftppass` na raíz do seu projeto com seus dados de username/password. [Veja aqui](https://github.com/zonak/grunt-ftp-deploy#authentication-parameters) como fazer.
 
-4 - Após rodar estes comandos espero que tudo tenha dado certo
+5 - Após rodar estes comandos espero que tudo tenha dado certo
 
 ## Estrutura do projeto
 
