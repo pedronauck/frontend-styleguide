@@ -199,7 +199,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'clean',
     'assemble:production',
-    'compass:dist',
+    // 'compass:dist',
     'jsmin',
     'copy',
     'imagemin',
